@@ -1,0 +1,10 @@
+# runtime
+server.log
+screenshots
+*.log
+
+# kredensial asli (token & SN) — jangan ter-commit
+config.local.json
+
+# extracted pdf text (dihasilkan dari pdf, bisa dibuat ulang)
+api-plts-inverter.txt

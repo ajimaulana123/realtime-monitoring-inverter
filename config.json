@@ -1,0 +1,24 @@
+{
+  "mode": "simulate",
+
+  "server": {
+    "port": 8787
+  },
+
+  "growatt": {
+    "baseUrl": "http://test.growatt.com/v1",
+    "token": "6eb6f069523055a339d71e5b1f6c88cc",
+
+    "devices": [
+      "2033022963",
+      "TL15300005"
+    ],
+
+    "pollIntervalMs": 5000,
+    "requestTimeoutMs": 10000
+  },
+
+  "simulate": {
+    "deviceCount": 3
+  }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GROWATT · Pusat Kendali PLTS</title>
+<link
+  rel="icon"
+  href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='10' fill='%23ffb020'/%3E%3C/svg%3E"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Noto+Sans+Mono:wght@400;600&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="scanlines" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<header class="masthead">
+  <div class="masthead-left">
+    <div class="sun-mark" aria-hidden="true">
+      <svg viewBox="0 0 48 48" width="44" height="44">
+        <g class="sun-rays">
+          <line x1="24" y1="2"  x2="24" y2="10"/>
+          <line x1="24" y1="38" x2="24" y2="46"/>
+          <line x1="2"  y1="24" x2="10" y2="24"/>
+          <line x1="38" y1="24" x2="46" y2="24"/>
+          <line x1="8.4" y1="8.4" x2="14.2" y2="14.2"/>
+          <line x1="33.8" y1="33.8" x2="39.6" y2="39.6"/>
+          <line x1="8.4" y1="39.6" x2="14.2" y2="33.8"/>
+          <line x1="33.8" y1="14.2" x2="39.6" y2="8.4"/>
+        </g>
+        <circle cx="24" cy="24" r="9" class="sun-core"/>
+      </svg>
+    </div>
+    <div>
+      <h1>PLTS CONTROL <span>ROOM</span></h1>
+      <p class="sub">Growatt Inverter Telemetry · <span id="mode-label">—</span></p>
+    </div>
+  </div>
+
+  <div class="masthead-right">
+    <div class="clock">
+      <span class="clock-label">WAKTU LOKAL</span>
+      <span class="clock-time" id="clock">--:--:--</span>
+    </div>
+    <div class="feed-led" id="feed-led" title="Status koneksi telemetry">
+      <span class="led" id="led"></span>
+      <span class="feed-text" id="feed-text">MENGHUBUNGKAN…</span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-main">
+    <span class="hero-label">TOTAL OUTPUT AC SAAT INI</span>
+    <div class="hero-value">
+      <span id="total-pac">0</span><span class="hero-unit" id="total-pac-unit">W</span>
+    </div>
+    <div class="hero-meta">
+      <span>Puncak sesi: <b id="total-pac-max">0 W</b></span>
+      <span>Produksi hari ini: <b id="total-today">0 kWh</b></span>
+      <span>Poll: <b id="poll-count">#0</b></span>
+    </div>
+  </div>
+
+  <div class="hero-side">
+    <div class="gauge-row">
+      <span class="gauge-label">BEBAN vs KAPASITAS TERPASANG</span>
+      <div class="meter">
+        <div class="meter-fill" id="capacity-meter"></div>
+        <div class="meter-ticks" aria-hidden="true"></div>
+      </div>
+      <span class="gauge-value" id="capacity-text">0%</span>
+    </div>
+    <div class="hero-note" id="hero-note">
+      Menunggu data telemetry pertama…
+    </div>
+  </div>
+</section>
+
+<section class="chart-card">
+  <div class="chart-head">
+    <h2>KURVA DAYA · 15 MENIT TERAKHIR</h2>
+    <div class="legend">
+      <span><i class="swatch swatch-pac"></i>PAC (AC)</span>
+      <span><i class="swatch swatch-ppv"></i>PPV (PV DC)</span>
+    </div>
+  </div>
+  <div class="chart-wrap">
+    <canvas id="power-chart"></canvas>
+  </div>
+</section>
+
+<main class="rack" id="rack">
+  <!-- kartu inverter dirender oleh app.js -->
+</main>
+
+<footer class="statusbar">
+  <span id="sb-mode">MODE —</span>
+  <span id="sb-poll">POLL —</span>
+  <span id="sb-error" class="sb-error"></span>
+  <span class="sb-right" id="sb-clients">SSE · 1 client</span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
